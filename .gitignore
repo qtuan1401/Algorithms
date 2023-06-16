@@ -1,5 +1,4 @@
-**/test.cpp
-**/a
+*
 
-*.in
-*.out
+!**/*.cpp
+**/test.cpp
