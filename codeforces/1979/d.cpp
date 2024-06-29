@@ -47,16 +47,16 @@ int main() {
             if (s[i] == s[i - 1]) sum[i] = sum[i - 1] + 1;
             else sum[i] = 1;
         }
-        vector < int > fr(n, -1);
+        vector < int > valid(n, -1);
         for (int i = n - 1; i >= 0; i--) {
             if (i + k - 1 < n) {
-                fr[i] = sum[i + k - 1] == k;
-                if (i + k < n && fr[i + k] != -1) fr[i] &= fr[i + k];
+                valid[i] = sum[i + k - 1] == k;
+                if (i + k < n && valid[i + k] != -1) valid[i] &= valid[i + k];
             }
         }
-        // for (int i = 0; i < n; i++) cout << fr[i] << " ";
+        // for (int i = 0; i < n; i++) cout << valid[i] << " ";
         // cout << '\n';
-        if (fr[0] == 1) {
+        if (valid[0] == 1) {
             cout << n << " ";
             cout << '\n';
             continue;
@@ -73,7 +73,7 @@ int main() {
                 }
             }
 
-            if (check(i, k, n, fr, s) == false) continue;
+            if (check(i, k, n, valid, s) == false) continue;
             // cout << i % k << " " << k - 1 << endl;
             if (i % k == k - 1) {
                 // cout << sum[i] << " " << endl;
